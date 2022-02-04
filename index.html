@@ -1,0 +1,455 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>COMP 411 Principles of Programming Languages</title>
+<style>
+<!--
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12pt;
+	font-family:Arial, Helvetica, sans-serif;
+	mso-fareast-font-family:"Times New Roman";
+	color:black;}
+h2
+	{margin-right:0in;
+	mso-margin-top-alt:auto;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:2;
+	font-size:18.0pt;
+	font-family:"Times New Roman";
+	color:black;
+	font-weight:bold;}
+p.MsoBodyTextIndent, li.MsoBodyTextIndent, div.MsoBodyTextIndent
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:Arial;
+	mso-fareast-font-family:"Times New Roman";
+	color:black;}
+a:link, span.MsoHyperlink
+	{color:#0000EE;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:#551A8B;
+	text-decoration:underline;
+	text-underline:single;}
+blockquote {margin-left:1in;}
+pre	{margin-left:.5in; font-size:12.0pt;}
+p
+	{margin-right:0in;
+	mso-margin-top-alt:auto;
+	mso-margin-bottom-alt:auto;
+	margin-left:.5in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:Arial;
+	mso-fareast-font-family:"Times New Roman";
+	color:black;}
+span.m
+	{mso-style-name:m;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+@list l0
+	{mso-list-id:72553523;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1108105116 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l0:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.75in;
+	mso-level-number-position:left;
+	margin-left:.75in;
+	text-indent:-.25in;}
+@list l1
+	{mso-list-id:1736663653;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-914846112 574108716 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l1:level1
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	margin-left:1.0in;
+	text-indent:-.25in;}
+ol
+	{margin-bottom:0in; margin-left:1in; font-size:12pt; font-family:Arial, Helvetica, sans-serif;}
+ul
+	{margin-bottom:0in; margin-left:1in; font-size:12pt; font-family:Arial, Helvetica, sans-serif;}
+h2	{font-family:Arial, Helvetica, sans-serif;}
+h3	{font-family:Arial, Helvetica, sans-serif;}
+-->
+</style>
+</head><body style="" alink="#ff0000" bgcolor="white" lang="EN-US" link="#0000ee" vlink="#551a8b"><div class="Section1">
+<p class="MsoNormal"> 
+  <!--[if !supportEmptyParas]-->
+  &nbsp; 
+  <!--[endif]-->
+  <o:p></o:p></p>
+<table style="width: 100%;" nosave="" border="0" cellpadding="0" width="100%">
+  <tbody><tr> 
+    <td style="padding: 0.75pt;"><p class="class1"><b><span style="font-size: 36pt; font-family: Arial; color: rgb(51, 102, 255);">Programming 
+        Assignment 3:<br>
+        Lazy Evaluation and Recursive Definitions</span></b> </p>
+    </td><td style="padding: 0.75pt;"> <p class="MsoNormal">&nbsp;</p></td>
+  </tr>
+</tbody></table>
+  <h2>Points: 100</h2>
+<h2>Files</h2>
+<!-- <p><a href="../../Assignments/3/java/">Supporting Code</a></p> -->
+<p><a href="../../Assignments/3/tests">Some Simple Test Inputs</a></p>
+<p>The class solution to Assignment 2 has been posted on Piazza "Resources".</p>
+<h2>Overview</h2>
+<p><b>Preparation</b> &nbsp; Create a <tt>programs/3</tt> directory within your 
+  <tt>comp411</tt> directory. All of your files for this assignment should be 
+  stored in the <tt>programs/3</tt> subdirectory.</p>
+<p><b>Teamwork</b> &nbsp; You are strongly encouraged to do this assignment and all other 
+  programming assignments using pair programming. When you submit your assignment, 
+  indicate the composition of your team (names, student ids, and email addresses) 
+  in your <tt>README</tt> file.</p>
+  <p>If you cannot find a partner and would like one,
+  <!-- send an email to <a href="mailto:comp411@rice.edu">comp411@rice.edu</a>  -->
+  post a message to our Piazza page
+  and we will try to find one for you. Teams of more than two members are not 
+  permitted.</p>
+<p><b>Task</b> &nbsp; Your task is to extend and modify your interpreter from 
+  <a href="../../Assignments/2">Assignment 2</a> or one of the solutions for Assignment 2 to: 
+</p><ul>
+  <li>perform the context-sensitive checking required to confirm that the
+  input program is a legal program;</li>
+  <li>enforce safety in Jam programs by detecting illegal operations before
+    they are executed triggering a Java run-time error. (No meta errors!) </li>
+  <li>change the semantics of the <tt>let</tt> construct to support recursive 
+    bindings ("recursive let"); and</li>
+  <li>and support the optional lazy evaluation of the <tt>cons</tt> constructor 
+    using both the call-by-name and the call-by-need implementation of lazy evaluation.</li>
+</ul>
+<p>The details of the each of these extensions is described in the following
+paragraphs.</p>
+
+<p> <strong>Context-Sensitive Checking</strong> &nbsp; The context sensitive constraints 
+  on Jam syntax are most easily by performing a separate "checking pass" 
+  over the abstract syntax right after it has been constructed. There are two 
+  context-sensitive conditions that Jam programs must satisfy to be well-formed:
+</p><ul>
+  <li>There are no free variables.</li>
+  <li>The same variable name cannot appear twice in the same parameter list (of 
+    a <tt>map</tt>) or the same collection of let names (introduced in a <tt>let</tt> 
+    binding).</li>
+</ul>
+  <p>If you find either of these errors, throw a <tt>SyntaxException</tt> with a descriptive 
+    error message and abort execution.</p>
+  <p>The context-sensitive checker should be run before the expression is evaluated. 
+    Note that the context-sensitive checker does not care which unary or binary 
+    operator was used, or how many arguments were passed to a primitive function.</p>
+
+<p> <b>Safety</b>&nbsp; Make your interpreter responsible to catching all Jam 
+    run-time errors. Do not rely on the run-time checking performed in executing Java code (meta-errors).
+    All Jam run-time error messages should be of type <tt>EvalException</tt> generated directly by your interpreter.
+  </p><p>Note: It is not enough to just wrap the entire interpreter in a 
+   <tt>try { ... } catch(Throwable t) { ... }</tt> block. 
+  The exception must be thrown when the Jam run-time error occurs.</p>
+  <p>Safety checking obviously includes confirming that operators are applied to arguments of the proper type.  Hence,
+  the unary operators <tt>+</tt> and <tt>-</tt> and the binary operators 
+  <tt>+</tt>, <tt>-</tt>, <code>/</code>, <tt>*</tt>, <tt>&lt;</tt>, <tt>&lt;=</tt>, <tt>&gt;</tt> and <tt>&gt;=</tt>,
+  may only be applied to integer values.
+  Similarly, the unary operator <code>~</code> and binary
+  operators <code>&amp;</code> and <tt>|</tt> may only be applied to boolean values.  In general, you must check that
+  every language construct is applied to the correct number and type of values including checking that the test value in a Jam <tt>if</tt> is
+  a boolean value.  Many of these checks were already stipulated as part of the semantics of Jam constructs given in Assignment 2.  In no
+  case should your interpreters generate run-time Java errors other than
+  insufficient machine resource errors such as StackOverflow or OutOfMemory (heap overflow) errors, which are 
+  <i>not</i> classified as meta-errors.
+  Of course, you are welcome to catch the corresponding exceptions and report your own errors.</p>
+
+  <p><b>Lazy cons</b>&nbsp; For all three of your interpreters from Assignment 2,
+  you will add two lazy <tt>cons</tt> evaluation options that defer the evaluation 
+  of both arguments of a <tt>cons</tt> construction. The data object representing 
+  the deferred evaluation is called a <em>suspension</em>. Given a <tt>cons</tt> 
+  node containing suspensions, the <tt>first</tt> and <tt>rest</tt> operations evaluate the corresponding 
+  argument expressions in the environment where the expressions would have been 
+  evaluated without laziness.</p>
+<p>Lazy <tt>cons</tt> obeys the following equations:</p>
+  <pre>first(cons(M,N)) = M
+rest(cons(M,N)) = if list?(N) then N else error</pre>
+<p>for all Jam expresions <tt>M</tt> and <tt>N</tt>, including expressions that 
+  diverge or generate run-time errors. Recall that <tt>list?</tt> is simply the 
+  disjunction of <tt>null?</tt> and <tt>cons?</tt>.</p>
+  <p>The lazy versions of <tt>cons</tt> postpone evalution of argument expressions 
+    until they are demanded by a <tt>first</tt> or <tt>rest</tt> operation. You 
+    can use exactly the same suspension mechanism to support call-by-name and 
+    call-by-need lazy <tt>cons</tt> that you might have used to support call-by-name 
+    and call-by-need bindings in the previous assignment. In this case, the suspensions 
+    are stored in a <tt>cons</tt> structure rather than a binding structure the 
+    environment. An embedded suspension is not evaluated until it is "probed" 
+    by a <tt>first</tt> or <tt>rest</tt> operation. Call-by-name lazy evaluation 
+    re-evaluates suspensions every time that they are probed. Call-by-need lazy 
+    evaluation evaluates a given suspension only once and caches the resulting 
+    value in the data constructor (<tt>cons</tt> cell in the case of Jam).</p>
+  <p>Please change the function that converts Jam values to a string representation 
+    (toString, string_of_value, etc.) so that lists are still displayed as lists 
+    in the form <tt>(1 2 3)</tt> as before, regardless of the cons mode used. 
+    You may want to abort processing lists longer than, say, 1000 elements and 
+    have them displayed ending in <tt>998 999 1000 ...)</tt>. However, we will not 
+    test this behavior. We will just require that lists up to 200 elements are 
+    displayed the same way as in the last assignment.</p>
+<p><b>Recursive Let</b> &nbsp; The recursive version of the <tt>let</tt> construct 
+  introduces a collection of recursive bindings just as we discussed in class. 
+  We will not restrict the right hand sides of recursive <tt>let</tt> constructions 
+  to maps because many useful recursive definitions in Jam with lazy cons violate 
+  this restriction. Hence, the implementation of recursive <tt>let</tt> closely 
+  follows the implementation of the generalized version of <tt>rec-let</tt> construct 
+  in LC.
+</p><p>The only difference is that Jam recursive <tt>let</tt> may introduce several 
+  mutually recursive definitions where the corresponding closures all close over 
+  the new environment. Since we want invalid forward references in a Jam program 
+  to produce a meaningful error message rather than diverging, we will use an 
+  explicit list to represent the environment of bindings and destructively update 
+  it to create the self-references.
+  </p><p>In a call-by-value application, we will initially bind each variable introduced 
+    in a <tt>let</tt> to a special "undefined" value
+    (e.g., Java <tt>null</tt>) that is not a legal 
+    Jam value representation and will abort the computation if it is used as the 
+    input to any Jam operation. The interpreter evaluates the right-hand sides 
+    of the definitions in a recursive <tt>let</tt> in left-to-right order and 
+    destructively modifies each new binding in the environment as soon as the 
+    right-hand side has been determined. 
+  </p><p>In a call-by-name application, we bind each variable to a suspension (a closure 
+  of no arguments or <em>thunk</em>) for each right-hand side. Since a suspension 
+  wraps the right hand side of each <tt>let</tt> binding inside a lambda, the 
+  recursive environment can be constructed directly using a recursive binding
+  construction (<tt>letrec</tt> or <tt>define</tt> in Scheme).
+  No mutation is required in languages like Scheme and ML that support general recursive
+  binding.  In languages like Java that do not support general recursive binding, we
+  use mutable binding cells instead.
+</p><p>Note that the validity of definitions in a recursive <tt>let</tt> depends on 
+  which semantics is used for Jam. Definitions that are valid for call-by-name 
+  or call-by-need lazy evaluation may be invalid in other evaluation modes. By 
+  this measure, lazy evaluation is better than conventional ("eager") 
+  evaluation and call-by-name/call-by-need is better than call-by-value.
+</p><p><b>Testing</b> &nbsp; You are expected to write unit tests for all of your non-trivial
+  methods or functions <em> and submit your test code as part of your program</em>.
+  For more information, refer back to <a href="../../Assignments/1/index.html">Assignment 1</a>.</p>
+
+<p>In Assignment 2, the Interpreter supported three 
+  evaluation methods</p>
+  
+<pre>callByValue()
+callByName()
+callByNeed()</pre>
+<p>In this assigment, the Interpreter class must support nine evaluation methods:
+</p><pre>valueValue()
+nameValue()
+needValue()
+valueName()
+nameName()
+needName()
+valueNeed()
+nameNeed()
+needNeed()</pre>
+<p>where the first word in the method name specifies the policy for evaluating 
+  program-defined procedure applications (Jam maps) and the second word specifies 
+  the policy for evaluating applications of the data constructor <tt>cons</tt>. 
+  Hence the first three methods in the preceding list correspond to the three 
+  evaluation methods in Assignment 2.</p>
+<p>As in Assignment 2, the <tt>Interpreter</tt> class must support two constructors: 
+  <tt>Interpreter(String filename)</tt> which takes input from the specified file 
+  and <tt>Interpreter(Reader inputStream)</tt> which takes input from the specified 
+  Reader. A given <tt>Interpreter</tt> object should support the repeated invocation 
+  of any of the nine public evaluator methods. As a result, the same <tt>Interpreter</tt> 
+  object can be used to test all forms of evaluation (as long as none of the evaluations 
+  diverges).</p>
+<p>In summary:</p> 
+<pre>/** file Interpreter.java **/
+class EvalException extends RuntimeException {
+    EvalException(String msg) { super(msg); }
+}
+ 
+class SyntaxException extends RuntimeException {
+    SyntaxException(String msg) { super(msg); }
+}
+ 
+class Interpreter {
+   Interpreter(String fileName) throws IOException;
+   Interpreter(Reader reader);
+   
+   public JamVal valueValue();
+   public JamVal nameValue();
+   public JamVal needValue();
+   
+   public JamVal valueName();
+   public JamVal nameName();
+   public JamVal needName();
+   
+   public JamVal valueNeed();
+   public JamVal nameNeed();
+   public JamVal needNeed();
+}
+</pre>
+
+<h3>Lazy List Equality</h3> 
+<p><b>
+ COMP 511: Required
+ <br>
+ COMP 411: Extra Credit (10 points)
+</b></p>
+
+<p>
+There are two possible strategies for checking equality of lazy lists.
+Either all comparisons involving lazy lists force evaluation of the entire list
+(causing the evaluation to diverge if a list is infinite),
+or equality checks can short-circuit and return meaningful values on some comparisons
+involving lazy lists.
+</p>
+
+<p>
+Short-circuit equality checks are implemented by doing an element-wise comparison of
+the two operand lists, and returning <tt>true</tt> or <tt>false</tt> as soon as the lists
+can be proved equal or non-equal. For example:
+</p>
+<pre>let xs := cons(0, xs);
+    ys := cons(0, cons(0, null));
+in xs = ys</pre>
+<p>
+In the above code, we can return <tt>false</tt> when we are comparing the 3rd cons-cells of <var>xs</var>
+and <var>ys</var> above, since the <tt>rest</tt> of <var>xs</var> is non-null, but the <tt>rest</tt> of
+<var>ys</var> is null.
+</p>
+
+<p>
+Equality checks can similarly short-circuit on non-equal head values, or on identical tails.
+For example:
+</p>
+<pre>let ones := cons(1, ones);
+in ones = cons(1, ones)</pre>
+<p>
+In the above code, we can return <tt>true</tt> when we are comparing <tt>rest</tt>s of the 1st cons-cells since
+<var>ones</var> and <var>ones</var> are identical (i.e., they are the same object).
+</p>
+<pre>let xs := cons(1, 2);
+    ys := cons(3, null);
+in xs != ys</pre>
+<p>
+The above code would return <tt>true</tt> with short-circuiting equality checks on lazy lists (since 1&ne;3),
+whereas if <tt>xs</tt> is fully evaluated (either because the lists are eager, or because the equality checks are eager)
+then a runtime exception will be thrown due to the illegal value (2) passed as the second argument to <tt>cons</tt>.
+</p>
+
+<p>
+Modify your implementation of Jam's <tt>=</tt> and <tt>!=</tt> operators to support short-circuit list equality,
+as described above, when evaluating in the by-name and by-need cons modes.
+</p>
+<p>
+Note that you can actually use the same evaluation strategy for eager (by-value) cons;
+however, it would only be a performance optimization in that case,
+whereas short-circuiting equality changes the semantics for some expressions involving lazy cons.
+</p>
+<p>
+Unlike the left-associativity feature in Assignment 1,
+this extra credit functionality will not be assumed in any later assignments;
+i.e., if you choose not to implement this feature,
+there is no need to patch your solution for Assignment 4 and onward
+to support comparing infinite/lazy lists differently than eager lists.
+</p>
+
+<p>Hint: In Java, the <tt>==</tt> operator compares identity for objects.</p>
+
+<h2>General Implementation Issues</h2>
+<p>To produce intelligible output for computations involving lazy <tt>cons</tt>, 
+  your interpreter must force the complete evaluation of the answer up to a large 
+  depth bound (which is a constant in your program). In Java, your <tt>toString()</tt> 
+  method for your lazy <tt>cons</tt> classes should use this depth bound to determine 
+  what to print.</p>
+<p>If a computation produces an infinite answer, the large bound (on the order 
+  of 1000) on forcing depth prevents the forcing computation from diverging. 
+  An interactive user interface that allowed the user to request the expansion 
+  of an unevaluated node (to some depth) in an answer would be more satisfactory, 
+  but building such an interface is beyond the scope of a routine programming 
+  assignment.</p>
+<p>For call-by-need lazy evaluation, the forcing operation can be implemented 
+  simply as a traversal that inspects the <tt>first</tt> and <tt>rest</tt> fields 
+  of every lazy <tt>cons</tt> node up to the specified depth and then returns 
+  its (modified) input. For call-by-name lazy evaluation, however, you will have 
+  to construct a new list using conventional "strict" (call-by-value) 
+  <tt>cons</tt> nodes.</p>
+<h2>Testing and Submitting Your Program</h2>
+<p>The directory <a href="../../Assignments/3/tests/">tests</a> contains the Java
+  test file <tt>Assign3Test.java</tt> containing some 
+  very simple unit tests for your program. We also suggest that 
+  you can make minor modifications to the test file <tt>Assign2Test.java</tt>
+  to create corresponding (and exceedingly incomplete) test 
+  files for this assignment.
+</p><p>Your program directory should only contain the files that you want to submit. 
+  We will subsequently provide you with test scripts similar to the ones we provided 
+  for Assignment 2. Running these scripts will alert you to any problems with 
+  your directory configuration. We will also place a few addtional test programs 
+  in the directory <a href="../../Assignments/3/tests/">tests</a>.
+</p><p>Make sure that your program passes the sample unit tests and works with our 
+  grading script before submitting it. Create a <tt>README</tt> file in the your directory <tt>program/3</tt> that 
+</p><ul>
+  <li>contains nothing but the user names of the team members in lines 1 and 2 and a blank line as line 3, </li>
+  <li>outlines the organization of your program, and</li>
+  <li>specifies what testing process you used to confirm the correctness of your program.</li>
+</ul>
+  <p>
+    We have provided a <a href="../../../shared/Sample/README">sample <tt>README</tt></a> for your reference.
+    Make sure that your <tt>README</tt> file is structured correctly:
+  </p>
+<ol>
+  <li>It has to be named README (all upper case, no .txt or anything)</li>
+  <li>It has to be in the assignment's "root directory", e.g. <tt>~/comp411/programs/3</tt></li>
+  <li>The
+first two lines should only contain your usernames and nothing else.
+The third line should be blank (if you're working alone, leave lines 2
+and 3 blank), e.g.:<br>
+      <table border="1">
+        <tbody><tr>
+          <td> mgricken<br>
+          dmp<br>
+          <br>
+          This is where the readme text starts. </td>
+        </tr>
+      </tbody></table>
+  </li>
+</ol>
+<p>Any test data files for your program must be stored in the <tt>programs/3</tt> 
+    directory. <strong>Please make sure you submit your unit tests! You cannot 
+    get credit for parts not submitted!</strong></p>
+  
+  <p>Each procedure or method in your program should include a short comment stating 
+    precisely what it does. For routines that parse a particular form of program 
+    phrase, give grammar rules describing that form.</p>
+  <p>Please make sure to remove or disable all debug output before submitting. 
+    Excessive use of print statements considerably slows your interpreter and 
+    thus testing your project down. If your interpreter generates a timeout error 
+    because debug output slows it down, you may not get credit for the test cases 
+    that took too long.</p>
+<p>To submit your program, make sure that everything that you want to submit 
+  is located in the directory comp411/programs/3 on CLE@R and type the command</p>
+  <pre>~comp411/bin/turnin411 3</pre>
+<p>from within the comp411/programs directory.</p>
+<p>The command will inform you whether or not your submission succeeded. Only 
+  submit one copy of your program per team. If you need to resubmit an improved 
+  version your program, submit it from the same account as the original so that 
+  the old version is replaced.</p>
+<div> 
+  <p class="MsoNormal"><a href="../../"><font face="Arial, Helvetica, sans-serif">Back 
+    to course website</font></a></p>
+</div>
+</div></body></html>
