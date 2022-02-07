@@ -16,17 +16,16 @@ xmlns="http://www.w3.org/TR/REC-html40">
   <o:Author>Robert Cartwright</o:Author>
   <o:Template>Normal</o:Template>
   <o:LastAuthor>Robert Cartwright</o:LastAuthor>
-  <o:Revision>4</o:Revision>
-  <o:TotalTime>271</o:TotalTime>
-  <o:LastPrinted>2022-02-06T00:11:00Z</o:LastPrinted>
+  <o:Revision>3</o:Revision>
+  <o:TotalTime>39</o:TotalTime>
   <o:Created>2022-02-05T23:27:00Z</o:Created>
-  <o:LastSaved>2022-02-06T04:03:00Z</o:LastSaved>
+  <o:LastSaved>2022-02-06T00:11:00Z</o:LastSaved>
   <o:Pages>1</o:Pages>
-  <o:Words>2439</o:Words>
-  <o:Characters>13209</o:Characters>
-  <o:Lines>110</o:Lines>
-  <o:Paragraphs>31</o:Paragraphs>
-  <o:CharactersWithSpaces>15617</o:CharactersWithSpaces>
+  <o:Words>2286</o:Words>
+  <o:Characters>12497</o:Characters>
+  <o:Lines>104</o:Lines>
+  <o:Paragraphs>29</o:Paragraphs>
+  <o:CharactersWithSpaces>14754</o:CharactersWithSpaces>
   <o:Version>15.00</o:Version>
  </o:DocumentProperties>
  <o:OfficeDocumentSettings>
@@ -885,42 +884,6 @@ div.WordSection1
  @list l0
 	{mso-list-id:880288093;
 	mso-list-template-ids:962097204;}
-@list l0:level1
-	{mso-level-tab-stop:.5in;
-	mso-level-number-position:left;
-	text-indent:-.25in;}
-@list l0:level2
-	{mso-level-tab-stop:1.0in;
-	mso-level-number-position:left;
-	text-indent:-.25in;}
-@list l0:level3
-	{mso-level-tab-stop:1.5in;
-	mso-level-number-position:left;
-	text-indent:-.25in;}
-@list l0:level4
-	{mso-level-tab-stop:2.0in;
-	mso-level-number-position:left;
-	text-indent:-.25in;}
-@list l0:level5
-	{mso-level-tab-stop:2.5in;
-	mso-level-number-position:left;
-	text-indent:-.25in;}
-@list l0:level6
-	{mso-level-tab-stop:3.0in;
-	mso-level-number-position:left;
-	text-indent:-.25in;}
-@list l0:level7
-	{mso-level-tab-stop:3.5in;
-	mso-level-number-position:left;
-	text-indent:-.25in;}
-@list l0:level8
-	{mso-level-tab-stop:4.0in;
-	mso-level-number-position:left;
-	text-indent:-.25in;}
-@list l0:level9
-	{mso-level-tab-stop:4.5in;
-	mso-level-number-position:left;
-	text-indent:-.25in;}
 @list l1
 	{mso-list-id:970205115;
 	mso-list-template-ids:-1300824304;}
@@ -1287,26 +1250,12 @@ ul
 
 <h2><span style='mso-fareast-font-family:"Times New Roman"'>Points: 100<o:p></o:p></span></h2>
 
-<h2><span style='mso-fareast-font-family:"Times New Roman"'>Provided Code<o:p></o:p></span></h2>
+<h2><span style='mso-fareast-font-family:"Times New Roman"'>Files<o:p></o:p></span></h2>
 
 <!-- <p><a href="../../Assignments/3/java/">Supporting Code</a></p> -->
 
 <p>The class solution to Assignment 2 appears in the support code for Project 3
-on GitHub Classroom in a folder named <b style='mso-bidi-font-weight:normal'><span
-style='font-family:Consolas'>2 Solution</span></b>. The folder <span
-class=SpellE><b style='mso-bidi-font-weight:normal'>src</b></span> folder
-contains a collection of files taken from the class solution to <b
-style='mso-bidi-font-weight:normal'><span style='font-family:Consolas'>Project
-3</span></b> similar in scope to those provided from Project 2.<span
-style='mso-spacerun:yes'>  </span>You only need to write the code for the interpreter.<span
-style='mso-spacerun:yes'>  </span>You do not need to create any additional
-files but you have that option if you think is enhances program organization or
-clarity.<span style='mso-spacerun:yes'>  </span>You must support the same
-testing API required to run the provided Junit4 tests and you need to write
-additional tests (either by adding tests to <b style='mso-bidi-font-weight:
-normal'><span style='font-family:Consolas'>Assign3Test.java</span></b> or by
-creating additional test files with names ending in <b style='mso-bidi-font-weight:
-normal'><span style='font-family:Consolas'>Test</span></b>.</p>
+on GitHub Classroom provided when students accept this assignment.</p>
 
 <h2><span style='mso-fareast-font-family:"Times New Roman"'>Overview<o:p></o:p></span></h2>
 
@@ -1356,14 +1305,7 @@ style='color:windowtext'> constructor using both the call-by-name and the
 call-by-need implementation of lazy evaluation.<o:p></o:p></span></p>
 
 <p>The details of the each of these extensions is described in the following
-paragraphs. Some of the work has already been done in the support code.<span
-style='mso-spacerun:yes'>  </span>To complete your Project 3 interpreter, you
-do not need to modify any of the provided support files except <b
-style='mso-bidi-font-weight:normal'><span style='font-family:Consolas'>Interp.java</span></b>.<span
-style='mso-spacerun:yes'>  </span>You also either need to create a new test file
-containing your own tests or add those tests to the provided file <b
-style='mso-bidi-font-weight:normal'><span style='font-family:Consolas'>Assign3Test.java.</span></b>
-</p>
+paragraphs.</p>
 
 <p><strong><span style='font-family:"Arial",sans-serif'>Context-Sensitive
 Checking</span></strong> &nbsp; The context sensitive constraints on Jam syntax
@@ -1472,12 +1414,7 @@ where the expressions would have been evaluated without laziness.</p>
 12.0pt;font-family:Consolas'>cons</span></b></tt> obeys the following
 equations:</p>
 
-<pre><span class=GramE><b style='mso-bidi-font-weight:normal'><span
-style='font-family:Consolas'>first(</span></b></span><b style='mso-bidi-font-weight:
-normal'><span style='font-family:Consolas'>cons(M,N)) = M<o:p></o:p></span></b></pre><pre><span
-class=GramE><b style='mso-bidi-font-weight:normal'><span style='font-family:
-Consolas'>rest(</span></b></span><b style='mso-bidi-font-weight:normal'><span
-style='font-family:Consolas'>cons(M,N)) = if list?(N) then N else error<o:p></o:p></span></b></pre>
+<pre><span class=GramE>first(</span>cons(M,N)) = M</pre><pre><span class=GramE>rest(</span>cons(M,N)) = if list?(N) then N else error</pre>
 
 <p><span class=GramE>for</span> all Jam <span class=SpellE>expresions</span> <tt><b
 style='mso-bidi-font-weight:normal'><span style='mso-ansi-font-size:12.0pt;
@@ -1591,70 +1528,24 @@ information, refer back to <a href="../../Assignments/1/index.html">Assignment
 
 <p>In Assignment 2, the Interpreter supported three evaluation methods</p>
 
-<pre><span class=SpellE><span class=GramE><b style='mso-bidi-font-weight:normal'><span
-style='font-family:Consolas'>callByValue</span></b></span></span><span
-class=GramE><b style='mso-bidi-font-weight:normal'><span style='font-family:
-Consolas'>()</span></b></span><b style='mso-bidi-font-weight:normal'><span
-style='font-family:Consolas'><o:p></o:p></span></b></pre><pre><span
-class=SpellE><span class=GramE><b style='mso-bidi-font-weight:normal'><span
-style='font-family:Consolas'>callByName</span></b></span></span><span
-class=GramE><b style='mso-bidi-font-weight:normal'><span style='font-family:
-Consolas'>()</span></b></span><b style='mso-bidi-font-weight:normal'><span
-style='font-family:Consolas'><o:p></o:p></span></b></pre><pre><span
-class=SpellE><span class=GramE><b style='mso-bidi-font-weight:normal'><span
-style='font-family:Consolas'>callByNeed</span></b></span></span><span
-class=GramE><b style='mso-bidi-font-weight:normal'><span style='font-family:
-Consolas'>()</span></b></span><b style='mso-bidi-font-weight:normal'><span
-style='font-family:Consolas'><o:p></o:p></span></b></pre>
+<pre><span class=SpellE><span class=GramE>callByValue</span></span><span
+class=GramE>()</span></pre><pre><span class=SpellE><span class=GramE>callByName</span></span><span
+class=GramE>()</span></pre><pre><span class=SpellE><span class=GramE>callByNeed</span></span><span
+class=GramE>()</span></pre>
 
 <p>In this <span class=SpellE>assigment</span>, the Interpreter class must
 support nine evaluation methods: </p>
 
-<pre><span class=SpellE><span class=GramE><b style='mso-bidi-font-weight:normal'><span
-style='font-family:Consolas'>valueValue</span></b></span></span><span
-class=GramE><b style='mso-bidi-font-weight:normal'><span style='font-family:
-Consolas'>()</span></b></span><b style='mso-bidi-font-weight:normal'><span
-style='font-family:Consolas'><o:p></o:p></span></b></pre><pre><span
-class=SpellE><span class=GramE><b style='mso-bidi-font-weight:normal'><span
-style='font-family:Consolas'>nameValue</span></b></span></span><span
-class=GramE><b style='mso-bidi-font-weight:normal'><span style='font-family:
-Consolas'>()</span></b></span><b style='mso-bidi-font-weight:normal'><span
-style='font-family:Consolas'><o:p></o:p></span></b></pre><pre><span
-class=SpellE><span class=GramE><b style='mso-bidi-font-weight:normal'><span
-style='font-family:Consolas'>needValue</span></b></span></span><span
-class=GramE><b style='mso-bidi-font-weight:normal'><span style='font-family:
-Consolas'>()</span></b></span><b style='mso-bidi-font-weight:normal'><span
-style='font-family:Consolas'><o:p></o:p></span></b></pre><pre><span
-class=SpellE><span class=GramE><b style='mso-bidi-font-weight:normal'><span
-style='font-family:Consolas'>valueName</span></b></span></span><span
-class=GramE><b style='mso-bidi-font-weight:normal'><span style='font-family:
-Consolas'>()</span></b></span><b style='mso-bidi-font-weight:normal'><span
-style='font-family:Consolas'><o:p></o:p></span></b></pre><pre><span
-class=SpellE><span class=GramE><b style='mso-bidi-font-weight:normal'><span
-style='font-family:Consolas'>nameName</span></b></span></span><span
-class=GramE><b style='mso-bidi-font-weight:normal'><span style='font-family:
-Consolas'>()</span></b></span><b style='mso-bidi-font-weight:normal'><span
-style='font-family:Consolas'><o:p></o:p></span></b></pre><pre><span
-class=SpellE><span class=GramE><b style='mso-bidi-font-weight:normal'><span
-style='font-family:Consolas'>needName</span></b></span></span><span
-class=GramE><b style='mso-bidi-font-weight:normal'><span style='font-family:
-Consolas'>()</span></b></span><b style='mso-bidi-font-weight:normal'><span
-style='font-family:Consolas'><o:p></o:p></span></b></pre><pre><span
-class=SpellE><span class=GramE><b style='mso-bidi-font-weight:normal'><span
-style='font-family:Consolas'>valueNeed</span></b></span></span><span
-class=GramE><b style='mso-bidi-font-weight:normal'><span style='font-family:
-Consolas'>()</span></b></span><b style='mso-bidi-font-weight:normal'><span
-style='font-family:Consolas'><o:p></o:p></span></b></pre><pre><span
-class=SpellE><span class=GramE><b style='mso-bidi-font-weight:normal'><span
-style='font-family:Consolas'>nameNeed</span></b></span></span><span
-class=GramE><b style='mso-bidi-font-weight:normal'><span style='font-family:
-Consolas'>()</span></b></span><b style='mso-bidi-font-weight:normal'><span
-style='font-family:Consolas'><o:p></o:p></span></b></pre><pre><span
-class=SpellE><span class=GramE><b style='mso-bidi-font-weight:normal'><span
-style='font-family:Consolas'>needNeed</span></b></span></span><span
-class=GramE><b style='mso-bidi-font-weight:normal'><span style='font-family:
-Consolas'>()</span></b></span><b style='mso-bidi-font-weight:normal'><span
-style='font-family:Consolas'><o:p></o:p></span></b></pre>
+<pre><span class=SpellE><span class=GramE>valueValue</span></span><span
+class=GramE>()</span></pre><pre><span class=SpellE><span class=GramE>nameValue</span></span><span
+class=GramE>()</span></pre><pre><span class=SpellE><span class=GramE>needValue</span></span><span
+class=GramE>()</span></pre><pre><span class=SpellE><span class=GramE>valueName</span></span><span
+class=GramE>()</span></pre><pre><span class=SpellE><span class=GramE>nameName</span></span><span
+class=GramE>()</span></pre><pre><span class=SpellE><span class=GramE>needName</span></span><span
+class=GramE>()</span></pre><pre><span class=SpellE><span class=GramE>valueNeed</span></span><span
+class=GramE>()</span></pre><pre><span class=SpellE><span class=GramE>nameNeed</span></span><span
+class=GramE>()</span></pre><pre><span class=SpellE><span class=GramE>needNeed</span></span><span
+class=GramE>()</span></pre>
 
 <p><span class=GramE>where</span> the first word in the method name specifies
 the policy for evaluating program-defined procedure applications (Jam maps) and
@@ -1683,55 +1574,27 @@ evaluations diverges).</p>
 
 <p>In summary:</p>
 
-<pre><b style='mso-bidi-font-weight:normal'><span style='font-family:Consolas'>/** file Interpreter.java **/<o:p></o:p></span></b></pre><pre><span
-class=GramE><b style='mso-bidi-font-weight:normal'><span style='font-family:
-Consolas'>class</span></b></span><b style='mso-bidi-font-weight:normal'><span
-style='font-family:Consolas'> <span class=SpellE>EvalException</span> extends <span
-class=SpellE>RuntimeException</span> {<o:p></o:p></span></b></pre><pre><b
-style='mso-bidi-font-weight:normal'><span style='font-family:Consolas'><span style='mso-spacerun:yes'>    </span><span
+<pre>/** file Interpreter.java **/</pre><pre><span class=GramE>class</span> <span
+class=SpellE>EvalException</span> extends <span class=SpellE>RuntimeException</span> {</pre><pre><span style='mso-spacerun:yes'>    </span><span
 class=SpellE><span class=GramE>EvalException</span></span><span class=GramE>(</span>String <span
-class=SpellE>msg</span>) { super(<span class=SpellE>msg</span>); }<o:p></o:p></span></b></pre><pre><b
-style='mso-bidi-font-weight:normal'><span style='font-family:Consolas'>}<o:p></o:p></span></b></pre><pre><b
-style='mso-bidi-font-weight:normal'><span style='font-family:Consolas'> <o:p></o:p></span></b></pre><pre><span
-class=GramE><b style='mso-bidi-font-weight:normal'><span style='font-family:
-Consolas'>class</span></b></span><b style='mso-bidi-font-weight:normal'><span
-style='font-family:Consolas'> <span class=SpellE>SyntaxException</span> extends <span
-class=SpellE>RuntimeException</span> {<o:p></o:p></span></b></pre><pre><b
-style='mso-bidi-font-weight:normal'><span style='font-family:Consolas'><span style='mso-spacerun:yes'>    </span><span
+class=SpellE>msg</span>) { super(<span class=SpellE>msg</span>); }</pre><pre>}</pre><pre> </pre><pre><span
+class=GramE>class</span> <span class=SpellE>SyntaxException</span> extends <span
+class=SpellE>RuntimeException</span> {</pre><pre><span style='mso-spacerun:yes'>    </span><span
 class=SpellE><span class=GramE>SyntaxException</span></span><span class=GramE>(</span>String <span
-class=SpellE>msg</span>) { super(<span class=SpellE>msg</span>); }<o:p></o:p></span></b></pre><pre><b
-style='mso-bidi-font-weight:normal'><span style='font-family:Consolas'>}<o:p></o:p></span></b></pre><pre><b
-style='mso-bidi-font-weight:normal'><span style='font-family:Consolas'> <o:p></o:p></span></b></pre><pre><span
-class=GramE><b style='mso-bidi-font-weight:normal'><span style='font-family:
-Consolas'>class</span></b></span><b style='mso-bidi-font-weight:normal'><span
-style='font-family:Consolas'> Interpreter {<o:p></o:p></span></b></pre><pre><b
-style='mso-bidi-font-weight:normal'><span style='font-family:Consolas'><span style='mso-spacerun:yes'>   </span><span
+class=SpellE>msg</span>) { super(<span class=SpellE>msg</span>); }</pre><pre>}</pre><pre> </pre><pre><span
+class=GramE>class</span> Interpreter {</pre><pre><span style='mso-spacerun:yes'>   </span><span
 class=GramE>Interpreter(</span>String <span class=SpellE>fileName</span>) throws <span
-class=SpellE>IOException</span>;<o:p></o:p></span></b></pre><pre><b
-style='mso-bidi-font-weight:normal'><span style='font-family:Consolas'><span style='mso-spacerun:yes'>   </span><span
-class=GramE>Interpreter(</span>Reader reader);<o:p></o:p></span></b></pre><pre><b
-style='mso-bidi-font-weight:normal'><span style='font-family:Consolas'><span style='mso-spacerun:yes'>   </span><o:p></o:p></span></b></pre><pre><b
-style='mso-bidi-font-weight:normal'><span style='font-family:Consolas'><span style='mso-spacerun:yes'>   </span><span
-class=GramE>public</span> <span class=SpellE>JamVal</span> <span class=SpellE>valueValue</span>();<o:p></o:p></span></b></pre><pre><b
-style='mso-bidi-font-weight:normal'><span style='font-family:Consolas'><span style='mso-spacerun:yes'>   </span><span
-class=GramE>public</span> <span class=SpellE>JamVal</span> <span class=SpellE>nameValue</span>();<o:p></o:p></span></b></pre><pre><b
-style='mso-bidi-font-weight:normal'><span style='font-family:Consolas'><span style='mso-spacerun:yes'>   </span><span
-class=GramE>public</span> <span class=SpellE>JamVal</span> <span class=SpellE>needValue</span>();<o:p></o:p></span></b></pre><pre><b
-style='mso-bidi-font-weight:normal'><span style='font-family:Consolas'><span style='mso-spacerun:yes'>   </span><o:p></o:p></span></b></pre><pre><b
-style='mso-bidi-font-weight:normal'><span style='font-family:Consolas'><span style='mso-spacerun:yes'>  </span><span style='mso-spacerun:yes'> </span><span
-class=GramE>public</span> <span class=SpellE>JamVal</span> <span class=SpellE>valueName</span>();<o:p></o:p></span></b></pre><pre><b
-style='mso-bidi-font-weight:normal'><span style='font-family:Consolas'><span style='mso-spacerun:yes'>   </span><span
-class=GramE>public</span> <span class=SpellE>JamVal</span> <span class=SpellE>nameName</span>();<o:p></o:p></span></b></pre><pre><b
-style='mso-bidi-font-weight:normal'><span style='font-family:Consolas'><span style='mso-spacerun:yes'>   </span><span
-class=GramE>public</span> <span class=SpellE>JamVal</span> <span class=SpellE>needName</span>();<o:p></o:p></span></b></pre><pre><b
-style='mso-bidi-font-weight:normal'><span style='font-family:Consolas'><span style='mso-spacerun:yes'>   </span><o:p></o:p></span></b></pre><pre><b
-style='mso-bidi-font-weight:normal'><span style='font-family:Consolas'><span style='mso-spacerun:yes'>   </span><span
-class=GramE>public</span> <span class=SpellE>JamVal</span> <span class=SpellE>valueNeed</span>();<o:p></o:p></span></b></pre><pre><b
-style='mso-bidi-font-weight:normal'><span style='font-family:Consolas'><span style='mso-spacerun:yes'>   </span><span
-class=GramE>public</span> <span class=SpellE>JamVal</span> <span class=SpellE>nameNeed</span>();<o:p></o:p></span></b></pre><pre><b
-style='mso-bidi-font-weight:normal'><span style='font-family:Consolas'><span style='mso-spacerun:yes'>   </span><span
-class=GramE>public</span> <span class=SpellE>JamVal</span> <span class=SpellE>needNeed</span>();<o:p></o:p></span></b></pre><pre><b
-style='mso-bidi-font-weight:normal'><span style='font-family:Consolas'>}<o:p></o:p></span></b></pre>
+class=SpellE>IOException</span>;</pre><pre><span style='mso-spacerun:yes'>   </span><span
+class=GramE>Interpreter(</span>Reader reader);</pre><pre><span style='mso-spacerun:yes'>   </span></pre><pre><span style='mso-spacerun:yes'>   </span><span
+class=GramE>public</span> <span class=SpellE>JamVal</span> <span class=SpellE>valueValue</span>();</pre><pre><span style='mso-spacerun:yes'>   </span><span
+class=GramE>public</span> <span class=SpellE>JamVal</span> <span class=SpellE>nameValue</span>();</pre><pre><span style='mso-spacerun:yes'>   </span><span
+class=GramE>public</span> <span class=SpellE>JamVal</span> <span class=SpellE>needValue</span>();</pre><pre><span style='mso-spacerun:yes'>   </span></pre><pre><span style='mso-spacerun:yes'>  </span><span style='mso-spacerun:yes'> </span><span
+class=GramE>public</span> <span class=SpellE>JamVal</span> <span class=SpellE>valueName</span>();</pre><pre><span style='mso-spacerun:yes'>   </span><span
+class=GramE>public</span> <span class=SpellE>JamVal</span> <span class=SpellE>nameName</span>();</pre><pre><span style='mso-spacerun:yes'>   </span><span
+class=GramE>public</span> <span class=SpellE>JamVal</span> <span class=SpellE>needName</span>();</pre><pre><span style='mso-spacerun:yes'>   </span></pre><pre><span style='mso-spacerun:yes'>   </span><span
+class=GramE>public</span> <span class=SpellE>JamVal</span> <span class=SpellE>valueNeed</span>();</pre><pre><span style='mso-spacerun:yes'>   </span><span
+class=GramE>public</span> <span class=SpellE>JamVal</span> <span class=SpellE>nameNeed</span>();</pre><pre><span style='mso-spacerun:yes'>   </span><span
+class=GramE>public</span> <span class=SpellE>JamVal</span> <span class=SpellE>needNeed</span>();</pre><pre>}</pre>
 
 <h3><span style='mso-fareast-font-family:"Times New Roman"'>Lazy List Equality<o:p></o:p></span></h3>
 
@@ -1751,16 +1614,10 @@ or <tt><b style='mso-bidi-font-weight:normal'><span style='mso-ansi-font-size:
 12.0pt;font-family:Consolas'>false</span></b></tt> as soon as the lists can be
 proved equal or non-equal. For example: </p>
 
-<pre><span class=GramE><b style='mso-bidi-font-weight:normal'><span
-style='font-family:Consolas'>let</span></b></span><b style='mso-bidi-font-weight:
-normal'><span style='font-family:Consolas'> <span class=SpellE>xs</span> := cons(0, <span
-class=SpellE>xs</span>);<o:p></o:p></span></b></pre><pre><b style='mso-bidi-font-weight:
-normal'><span style='font-family:Consolas'><span style='mso-spacerun:yes'>    </span><span
-class=SpellE><span class=GramE>ys</span></span> := cons(0, cons(0, null));<o:p></o:p></span></b></pre><pre><span
-class=GramE><b style='mso-bidi-font-weight:normal'><span style='font-family:
-Consolas'>in</span></b></span><b style='mso-bidi-font-weight:normal'><span
-style='font-family:Consolas'> <span class=SpellE>xs</span> = <span
-class=SpellE>ys</span><o:p></o:p></span></b></pre>
+<pre><span class=GramE>let</span> <span class=SpellE>xs</span> := cons(0, <span
+class=SpellE>xs</span>);</pre><pre><span style='mso-spacerun:yes'>    </span><span
+class=SpellE><span class=GramE>ys</span></span> := cons(0, cons(0, null));</pre><pre><span
+class=GramE>in</span> <span class=SpellE>xs</span> = <span class=SpellE>ys</span></pre>
 
 <p>In the above code, we can return <tt><b style='mso-bidi-font-weight:normal'><span
 style='mso-ansi-font-size:12.0pt;font-family:Consolas'>false</span></b></tt>
@@ -1778,12 +1635,8 @@ is null. </p>
 <p>Equality checks can similarly short-circuit on non-equal head values, or on
 identical tails. For example: </p>
 
-<pre><span class=GramE><b style='mso-bidi-font-weight:normal'><span
-style='font-family:Consolas'>let</span></b></span><b style='mso-bidi-font-weight:
-normal'><span style='font-family:Consolas'> ones := cons(1, ones);<o:p></o:p></span></b></pre><pre><span
-class=GramE><b style='mso-bidi-font-weight:normal'><span style='font-family:
-Consolas'>in</span></b></span><b style='mso-bidi-font-weight:normal'><span
-style='font-family:Consolas'> ones = cons(1, ones)<o:p></o:p></span></b></pre>
+<pre><span class=GramE>let</span> ones := cons(1, ones);</pre><pre><span
+class=GramE>in</span> ones = cons(1, ones)</pre>
 
 <p>In the above code, we can return <tt><b style='mso-bidi-font-weight:normal'><span
 style='mso-ansi-font-size:12.0pt;font-family:Consolas'>true</span></b></tt>
@@ -1793,15 +1646,9 @@ the 1st cons-cells since <var><span style='font-family:"Arial",sans-serif'>ones<
 and <var><span style='font-family:"Arial",sans-serif'>ones</span></var> are
 identical (i.e., they are the same object). </p>
 
-<pre><span class=GramE><b style='mso-bidi-font-weight:normal'><span
-style='font-family:Consolas'>let</span></b></span><b style='mso-bidi-font-weight:
-normal'><span style='font-family:Consolas'> <span class=SpellE>xs</span> := cons(1, 2);<o:p></o:p></span></b></pre><pre><b
-style='mso-bidi-font-weight:normal'><span style='font-family:Consolas'><span style='mso-spacerun:yes'>    </span><span
-class=SpellE><span class=GramE>ys</span></span> := cons(3, null);<o:p></o:p></span></b></pre><pre><span
-class=GramE><b style='mso-bidi-font-weight:normal'><span style='font-family:
-Consolas'>in</span></b></span><b style='mso-bidi-font-weight:normal'><span
-style='font-family:Consolas'> <span class=SpellE>xs</span> != <span
-class=SpellE>ys</span><o:p></o:p></span></b></pre>
+<pre><span class=GramE>let</span> <span class=SpellE>xs</span> := cons(1, 2);</pre><pre><span style='mso-spacerun:yes'>    </span><span
+class=SpellE><span class=GramE>ys</span></span> := cons(3, null);</pre><pre><span
+class=GramE>in</span> <span class=SpellE>xs</span> != <span class=SpellE>ys</span></pre>
 
 <p>The above code would return <tt><b style='mso-bidi-font-weight:normal'><span
 style='mso-ansi-font-size:12.0pt;font-family:Consolas'>true</span></b></tt>
@@ -1852,9 +1699,8 @@ normal'><span style='font-family:Consolas'>toString</span></b></span></span><spa
 class=GramE><b style='mso-bidi-font-weight:normal'><span style='font-family:
 Consolas'>(</span></b></span><b style='mso-bidi-font-weight:normal'><span
 style='font-family:Consolas'>)</span></b> operation in <span class=SpellE><b
-style='mso-bidi-font-weight:normal'><span style='font-family:Consolas'>JamCons</span></b></span><b
-style='mso-bidi-font-weight:normal'><span style='font-family:Consolas;
-mso-bidi-font-family:"Times New Roman"'> </span></b>to generate depth-bounded
+style='mso-bidi-font-weight:normal'><span style='font-family:Consolas'>JamCons</span></b></span><span
+style='font-family:"Times New Roman",serif'> </span>to generate depth-bounded
 output.<span style='mso-spacerun:yes'>  </span>The provided base code (a subset
 of the class solution) already does this with a depth bound of 1000.<span
 style='mso-spacerun:yes'>  </span>So even output of lists in call-by-value
