@@ -209,14 +209,12 @@ class Lexer extends StreamTokenizer {
         
       case '!': 
         tokenType = getToken();
-        if (tokenType == '=') return NOT_EQUALS;  
-        else throw new ParseException("!" + ((char) tokenType) + " is not a legal token"); 
+        if (tokenType == '=') return NOT_EQUALS;
+        pushBack();
+        throw new ParseException("'!' is not a legal token"); 
         
-        /* this alternate else clause supports the BANG operator in context of reference cells */
-//        else {
-//          pushBack();
+        /* this alternative code line replaces the code line and supports the BANG operator in context of reference cells */
 //          return BANG; 
-//        }
      
       case '&': return AND;  
       case '|': return OR;  

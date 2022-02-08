@@ -1,6 +1,8 @@
 Implementation Notes
 
-1. The domain of JamVals must be extended to include lazy forms of JamCons which we suggest be calling JamLazyNameCons and JamLazyNeedCons.
+1. The domain of JamVals must be extended to include lazy forms of JamCons which we suggest be calling JamLazyNameCons and JamLazyNeedCons.  We strongly recommend defining these
+   classes representing lazy variations on the standard eager formulation of composite lists as subclasses of JamCons so that they inherit (non-overridden) behavior of the 
+   JamCons class
 
 2. The Interpreter requires both revision and extension:
    a.  The processing of a let construction must perform recursive binding instead of conventional "lambda" binding.  In particular, the evaluation of the right-hand-sides of the
@@ -8,10 +10,10 @@ Implementation Notes
 	   implementation language (in our case Java) supports the recursive binding of functions (which Java does via anonymous inner classes but NOT via "lambda expressions"). But we
 	   have already observed that the function representation of environments is bad idea from a software engineering perspective because it makes the contents of an environment
 	   opaque in debugging and testing.  It also precludes optimizing the representation of environments (which for the sake of simplicity in the context of this course we avoid).
-	   For this reason, we choose to introduce the notion of dummy local variable binding by using Java null to represent a pending bound value.  In languages like Haskell and ML, where option types are used to represent the absence (typically using the value "None") of a value, the option type for bound values is used instead.  This approach supports more accurate typing, but does not work well in Java because null is still present in every type. (Observe that this comment is throwing salt on the Java data model. The Java "Option" types added in Java 8 are a misleading gimmick IMO because null values are still present.)
+	   For this reason, we choose to introduce the notion of dummy local variable binding by using Java null to represent a pending bound value.  In languages like Haskell and ML, where option types are used to represent the absence (typically using the value "None") of a value, the option type for bound values is used instead.  This approach supports more accurate typing in principle, but does not work well in Java because null is still present in every type. (Observe that this comment is throwing salt on the Java data model. The Java "Option" types added in Java 8 are a misleading gimmick IMO because null values are still present.)
    b.  The interpreter must have a ConsPolicy in addition to the BindingPolicy (EvalPolicy renamed) present in the class solution for Project 2.  This policy specifies the semantics
        of the cons operation in Jam: eager, lazy-by-name, and lazy-by-need.  The latter two choices have identical behavior (assuming Jam is purely functional) but very different
-	   performance.  Of course, it is possible to define a semantics (sometimes called a "cost semantics") that captures some coarse measure of performance but such semantics are inappropriate (and unnecessarily complex) for reasoning about basic program correctnesss (at least for sequential programs).
+	   performance.  Of course, it is possible to define a semantics (sometimes called a "cost semantics") that captures a coarse measure of performance but such semantics are inappropriate (and unnecessarily complex) for reasoning about basic program correctnesss (at least for sequential programs).
    c.  The interpreter API is extended to include the methods:
    
 		   JamVal valueValue()

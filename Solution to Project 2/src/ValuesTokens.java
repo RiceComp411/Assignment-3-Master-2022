@@ -32,7 +32,7 @@ class IntConstant implements Token, Constant, JamVal {
   public <ResType> ResType accept(JamValVisitor<ResType> v) { return v.forIntConstant(this); }
   /** redefines equals so that equal integers are recognized as equal */
   public boolean equals(Object other) {
-    return (other != null && this.getClass() == other.getClass()) && 
+    return (other != null && IntConstant.class == other.getClass()) && 
       (value == ((IntConstant)other).value());
   }
   /** computes the obvious hashcode for this consistent with equals. */
@@ -73,8 +73,7 @@ interface PureList<ElemType> {
   abstract PureList<ElemType> cons(ElemType o);
   abstract PureList<ElemType> empty();
   abstract <ResType> ResType accept(PureListVisitor<ElemType, ResType> v);
-    abstract boolean contains(ElemType e);
-    abstract String toStringHelp();
+  abstract String toStringHelp();
   abstract PureList<ElemType> append(PureList<ElemType> addedElts);
 }
 
@@ -96,7 +95,6 @@ abstract class PureListClass<ElemType> implements PureList<ElemType> {
 class Empty<ElemType> extends PureListClass<ElemType> {
   public <ResType> ResType accept(PureListVisitor<ElemType,ResType> v) { return v.forEmpty(this); }
   public PureList<ElemType> append(PureList<ElemType> addedElts) { return addedElts; }
-  public boolean contains(ElemType e) { return false; }
   
   /** overrides inherited equals because Empty is not a singleton! */
   public boolean equals(Object other) { 
@@ -120,21 +118,15 @@ class Cons<ElemType> extends PureListClass<ElemType> {
   
   public ElemType first() { return first; }
   public PureList<ElemType> rest() { return rest; }
-  public boolean contains(ElemType e) {
-    if (first.equals(e)) return true;
-    else return rest().contains(e);
-  }
   
-  /** Overrides inherited equals to perform structural equality testing. */
   public boolean equals(Object other) { 
-    if (other == null || ! (other instanceof Cons)) return false;
+    if (other == null || this.getClass() != other.getClass()) return false;
     Cons otherCons = (Cons) other;
-    return first().equals(otherCons.first()) && rest().equals(otherCons.rest());
+    return first.equals(otherCons.first) && rest.equals(otherCons.rest);
   }
-  /** Overrides hash code in accord with equals. */
-  public int hashCode() { return first().hashCode() + rest().hashCode(); }
   
   public String toString() { return "(" + first + rest.toStringHelp() + ")"; }
+  
   public String toStringHelp() { return " " + first + rest.toStringHelp(); }
 }
 
@@ -144,10 +136,6 @@ class Cons<ElemType> extends PureListClass<ElemType> {
 interface JamList extends PureList<JamVal>, JamVal {
   JamEmpty empty();
   JamCons cons(JamVal v);
-  /** Helper method that returns the depth-bounded string representation of this list with a leading blank in front of
-    * each element and no enclosing parentheses.  For lists longer than maxDepth, elipsis is printed instead of the 
-    * elements. */
-  String toStringHelp(int maxDepth);
 }
 
 /** A singleton class extending Empty<JamVal> representing the empty JamList. */
@@ -158,76 +146,37 @@ class JamEmpty extends Empty<JamVal> implements JamList {
   public JamEmpty empty() { return ONLY; }
   public JamCons cons(JamVal v) { return new JamCons(v, this); }
   public <ResType> ResType accept(JamValVisitor<ResType> v) { return v.forJamList(this); }
-  
-  public String toStringHelp(int maxDepth) { return ""; }
 }
 
 class JamCons extends Cons<JamVal> implements JamList {
-  
-  /** Maximum depth of printing the elements of a potentially lazy stream. */
-  private static final int MAX_DEPTH = 1000;
-  
   public JamCons(JamVal v, JamList vList) { super(v, vList); }
-  
-  /** Factory method that returns an empty list. */
   public JamEmpty empty() { return JamEmpty.ONLY; }
-  
-  /** Factory method that return a list consisting of cons(v, this). */
   public JamCons cons(JamVal v) { return new JamCons(v, this); }
   
   public <ResType> ResType accept(JamValVisitor<ResType> v) { return v.forJamList(this); }
   public JamList rest() { return (JamList) super.rest(); }
-  
-  /** Returns val if val is a JamList. Otherwise it throws an EvalException. */
-  public static JamList checkList(JamVal val) {
-    if (val instanceof JamList)  return (JamList)val;
-    throw new EvalException("The second argument to lazy cons is `" + val + "' which is not a list");
-  }
-  
-  /* Depth-bounded printing method which must be defined at this level so that ordinary JamCons nodes appearing
-   * within lazy lists are printed correctly. */
-  
-  /** Return the depth-bounded string representation of this. */
-  public String toString() { return "(" + first() + rest().toStringHelp(MAX_DEPTH) + ")"; }
-  
-  /** Return the depth-bounded string representation for this with a leading blank but no enclosing parentheses. */
-  public String toStringHelp(int maxDepth) {
-    if (maxDepth == 0)  return " ...";
-    return " " + first() + rest().toStringHelp(maxDepth - 1);
-  }
 }
 
-/* Important List Utilities defined by visitors */
 
-/** Interface for classes with a variable field (Variable and the various Binding classes). This interface permits
-  * the generic LookupVisitor below to operate on any subclass of PureList<T> where T implements WithVariable. */
-interface WithVariable {
-  /** Accessor for the variable. */
-  Variable var();
+/** The Suspension interface for a potentially deferred JamVal. This interface is intentionally opaque. */
+interface Suspension {
+  JamVal eval();
 }
 
-/** A generalized lookup visitor class that returns the element matching the embedded var in a 
-  * PureList<Elemtype extends WithVariable>. If no match found, returns null. */
-class LookupVisitor<ElemType extends WithVariable> implements PureListVisitor<ElemType, ElemType> {
-  /** Variable to look up. */
+/** The basic Jam binding class required to define JamClosure.  Nearly identical to ValueBinding in Interpreter. */
+abstract class Binding {
   Variable var;
+  JamVal value;
+  Binding(Variable v, JamVal jv) { var = v; value = jv; }
+  public Variable var() { return var; }
   
-  // Invariant: the lexer guarantees that there is only one Variable instance for a given name enabling == testing
+  /** Return the value of the binding which may require evaluation. */
+  public JamVal value() { return value; }
   
-  LookupVisitor(Variable v) { var = v; }
-  
-  /** Case for empty lists. */
-  public ElemType forEmpty(Empty<ElemType> e) { return null; }
-  
-  /** Case for non-empty lists. */
-  public ElemType forCons(Cons<ElemType> c) {
-    ElemType e = c.first();
-    if (var == e.var()) return e;
-    return c.rest().accept(this);
-  }
+  /** Sets the binding to the value of the specified by the Suspension s.  The evaluation (and binding of the value
+    * field may be delayed until value() is called depending on the Binding mechanism. */
+  public abstract void setBinding(Suspension s);
 }
-
-
 
 /* Other JamVal classes */
 
@@ -245,28 +194,6 @@ interface JamFunVisitor<ResType> {
   ResType forPrimFun(PrimFun pf);
 }
 
-/** The Suspension interface for a potentially deferred JamVal. This interface is intentionally opaque. */
-interface Suspension {
-  JamVal eval();
-}
-
-/** The basic Jam binding class required to define JamClosure.  Nearly identical to ValueBinding in Interpreter. */
-abstract class Binding implements WithVariable {
-  Variable var;
-  JamVal value;
-  Binding(Variable v, JamVal jv) { 
-    var = v; value = jv;
-  }
-  public Variable var() { return var; }
-  
-  /** Return the value of the binding which may require evaluation. */
-  public JamVal value() { return value; }
-  
-  /** Sets the binding to the value of the specified by the Suspension s.  The evaluation may be delayed until
-    * value() is called depending on the Binding mechanism. */
-  public abstract void setBinding(Suspension s);
-}
- 
 /** The class representing a Jam Closure. */
 class JamClosure extends JamFun {
   private Map body;
@@ -401,15 +328,11 @@ class EmptyConstant implements Token, Constant {
 }
 
 /** A class representing a Jam Variable.  Each distinct variable name is uniquely represented by a Variable object. */
-class Variable implements Token, Term, WithVariable {
+class Variable implements Token, Term {
   private String name;
   Variable(String n) { name = n; }
   
   public String name() { return name; }
-    
-  /** Method in WithVariable interface; trivial in this class. */
-  public Variable var() { return this; }
-  
   public <ResType> ResType accept(ASTVisitor<ResType> v) { return v.forVariable(this); }
   public String toString() { return name; }
 }

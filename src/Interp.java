@@ -102,10 +102,12 @@ class Interpreter {
   /** Class representing a binding in CBV evaluation. */ 
   static class ValueBinding extends Binding {
     /** Your code goes here ... */
+    public String toString() { return "[" + var + ", " + value + "]"; }
   }
   
   /** Class representing a binding in CBName evaluation. The inherited value field is ignored. */
   static class NameBinding extends Binding {
+    protected Suspension susp;
     /** Your code goes here ... */
     public String toString() { return "[" + var + ", " + susp + "]"; }
   }
@@ -140,16 +142,23 @@ class Interpreter {
     public Binding newDummyBinding(Variable var) { /** Your code goes here ... */ }
   };
   
-  
   /** A class representing an AST paired with the corresponding evaluator. */
   static class ConcreteSuspension implements Suspension {
+    private AST exp;
+    private EvalVisitor ev; 
     /** Your code goes here ... */
     public String toString() { return "<" + exp + ", " + ev + ">"; }
   }
   
+  static class Trivial {}
   
   /** Class for a lazy cons structure. */
   static class JamLazyNameCons extends JamCons {
+    /** Suspension for first */
+    protected Suspension firstSusp;
+    /** Suspension for rest */
+    protected Suspension restSusp;
+    
     /** Your code goes here ... */
   }
   

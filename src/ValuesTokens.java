@@ -227,8 +227,6 @@ class LookupVisitor<ElemType extends WithVariable> implements PureListVisitor<El
   }
 }
 
-
-
 /* Other JamVal classes */
 
 /** The class representing a Jam function (closure or primitive function). 
@@ -263,8 +261,8 @@ abstract class Binding implements WithVariable {
   /** Return the value of the binding which may require evaluation. */
   public JamVal value() { return value; }
   
-  /** Sets the binding to the value of the specified by the Suspension s.  The evaluation may be delayed until
-    * value() is called depending on the Binding mechanism. */
+  /** Sets the binding to the value of the specified by the Suspension s.  The Suspension s may be evaluated immediately
+    * or delayed until value() is called depending on the Binding mechanism. */
   public abstract void setBinding(Suspension s);
 }
  
