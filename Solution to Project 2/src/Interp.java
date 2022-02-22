@@ -195,7 +195,7 @@ class Interpreter {
    
       // construct newEnv for Let body; vars are bound to values of corresponding exps using evalVisitor
       PureList<Binding> newEnv = env();
-      for (int i = n-1; i >= 0; i--) newEnv = newEnv.cons(newBinding(vars[i], exps[i]));
+      for (int i = 0; i < n; i++) newEnv = newEnv.cons(newBinding(vars[i], exps[i]));
       
       EvalVisitor newEvalVisitor = newVisitor(newEnv);  
       
@@ -243,7 +243,7 @@ class Interpreter {
        * var in vars appears at the front of the new environment. */
       
       PureList<Binding> newEnv = closure.env();
-      for (int i = n-1; i >= 0; i--) 
+      for (int i = 0; i < n; i++) 
         newEnv = newEnv.cons(evalVisitor.newBinding(vars[i], args[i]));
       return map.body().accept(evalVisitor.newVisitor(newEnv));
     }

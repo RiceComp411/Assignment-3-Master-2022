@@ -147,13 +147,13 @@ public class Assign3Test extends TestCase {
     try {
       String output = "true";
       String input = "let id := map x to x; in id = id";
-      valueValueCheck("MapEquals1", output, input);
-      needValueCheck("MapEquals2", output, input);
-      nameValueCheck("MapEquals3", "false", input);
+      valueValueCheck("[0.75] MapEquals", output, input);
+      needValueCheck("[0.75] MapEquals", output, input);
+      nameValueCheck("[0.75] MapEquals", "false", input);
     }
     catch(Exception e) {
 //      e.printStackTrace();
-      fail("MapEquals threw " + e);
+      fail("[0.75] MapEquals threw " + e);
     }  
   } //end of method
   
